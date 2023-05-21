@@ -4,4 +4,9 @@ public class TipoItemCajado implements TipoItem{
     public static TipoItemCajado getTipoItemCajado(){
         return tipoItemCajado;
     }
+
+    @Override
+    public String toString() {
+        return "Cajado";
+    }
 }

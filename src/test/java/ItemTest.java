@@ -12,71 +12,96 @@ public class ItemTest {
     @BeforeEach
     void setUp() {
         druida = new PersonagemDruida(null);
-        guerreiro = new PersonagemGuerreiro(paladino);
         mago = new PersonagemMago(druida);
-        paladino = new PesonagemPaladino(guerreiro);
+        paladino = new PesonagemPaladino(mago);
+        guerreiro = new PersonagemGuerreiro(paladino);
     }
 
+    // Paladino
     @Test
-    void paladinoNeedEspada() {
-        assertEquals("Você pode pedir esse tipo de item",
-                paladino.needItem(new Item(TipoItemEspada.getTipoItemEspada())));
+    void paladinoEquiparEscudo(){
+        assertEquals("Paladino equipou o item: Escudo",
+            paladino.equiparItem(new Item(TipoItemEscudo.getTipoItemEscudo())));
     }
     @Test
-    void paladinoNeedCajado(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                paladino.needItem(new Item(TipoItemCajado.getTipoItemCajado())));
+    void paladinoEquiparCajado(){
+        assertEquals("Druida equipou o item: Cajado",
+                paladino.equiparItem(new Item(TipoItemCajado.getTipoItemCajado())));
     }
     @Test
-    void paladinoNeedPatua(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                paladino.needItem(new Item(TipoItemPatua.getTipoItemPatua())));
+    void paladinoEquiparLivroMagico(){
+        assertEquals("Mago equipou o item: Livro de magia",
+                paladino.equiparItem(new Item(TipoItemLivroMagico.getTipoItemLivroMagico())));
     }
     @Test
-    void guerreiroNeedEspada(){
-        assertEquals("Você pode pedir esse tipo de item",
-                guerreiro.needItem(new Item(TipoItemEspada.getTipoItemEspada())));
-    }
-    @Test
-    void guerreiroNeedCajado(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                guerreiro.needItem(new Item(TipoItemCajado.getTipoItemCajado())));
-    }
-    @Test
-    void guerreiroNeedPatua(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                guerreiro.needItem(new Item(TipoItemPatua.getTipoItemPatua())));
+    void paladinoEquiparEspada() {
+        assertEquals("Você não pode equipar esse tipo de item",
+                paladino.equiparItem(new Item(TipoItemEspada.getTipoItemEspada())));
     }
 
+    // Guerreiro
     @Test
-    void druidaNeedEspada(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                druida.needItem(new Item(TipoItemEspada.getTipoItemEspada())));
+    void guerreiroEquiparEspada(){
+        assertEquals("Guerreiro equipou o item: Espada",
+                guerreiro.equiparItem(new Item(TipoItemEspada.getTipoItemEspada())));
     }
     @Test
-    void druidaNeedCajado(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                druida.needItem(new Item(TipoItemCajado.getTipoItemCajado())));
+    void guerreiroEquiparCajado(){
+        assertEquals("Druida equipou o item: Cajado",
+                guerreiro.equiparItem(new Item(TipoItemCajado.getTipoItemCajado())));
     }
     @Test
-    void druidaNeedPatua(){
-        assertEquals("Você pode pedir esse tipo de item",
-                druida.needItem(new Item(TipoItemPatua.getTipoItemPatua())));
+    void guerreiroEquiparLivroMagico(){
+        assertEquals("Mago equipou o item: Livro de magia",
+                guerreiro.equiparItem(new Item(TipoItemLivroMagico.getTipoItemLivroMagico())));
     }
     @Test
-    void magoNeedEspada(){
-        assertEquals("Você não pode pedir esse tipo de item",
-                mago.needItem(new Item(TipoItemEspada.getTipoItemEspada())));
-    }
-    @Test
-    void magoNeedPatua(){
-        assertEquals("Você pode pedir esse tipo de item",
-                mago.needItem(new Item(TipoItemPatua.getTipoItemPatua())));
-    }
-    @Test
-    void magoNeedCajado(){
-        assertEquals("Você pode pedir esse tipo de item",
-                mago.needItem(new Item(TipoItemCajado.getTipoItemCajado())));
+    void guerreiroEquiparEscudo(){
+        assertEquals("Paladino equipou o item: Escudo",
+                guerreiro.equiparItem(new Item(TipoItemEscudo.getTipoItemEscudo())));
     }
 
+    // Druida
+    @Test
+    void druidaEquiparCajado(){
+        assertEquals("Druida equipou o item: Cajado",
+                druida.equiparItem(new Item(TipoItemCajado.getTipoItemCajado())));
+    }
+    @Test
+    void druidaEquiparEspada(){
+        assertEquals("Você não pode equipar esse tipo de item",
+                druida.equiparItem(new Item(TipoItemEspada.getTipoItemEspada())));
+    }
+    @Test
+    void druidaEquiparLivroMagico(){
+        assertEquals("Você não pode equipar esse tipo de item",
+                druida.equiparItem(new Item(TipoItemLivroMagico.getTipoItemLivroMagico())));
+    }
+    @Test
+    void druidaEquiparEscudo(){
+        assertEquals("Você não pode equipar esse tipo de item",
+                druida.equiparItem(new Item(TipoItemEscudo.getTipoItemEscudo())));
+    }
+
+    // Mago
+    @Test
+    void magoEquiparLivroMagico(){
+        assertEquals("Mago equipou o item: Livro de magia",
+                mago.equiparItem(new Item(TipoItemLivroMagico.getTipoItemLivroMagico())));
+    }
+    @Test
+    void magoEquiparCajado(){
+        assertEquals("Druida equipou o item: Cajado",
+                mago.equiparItem(new Item(TipoItemCajado.getTipoItemCajado())));
+    }
+    @Test
+    void magoEquiparEspada(){
+        assertEquals("Você não pode equipar esse tipo de item",
+                mago.equiparItem(new Item(TipoItemEspada.getTipoItemEspada())));
+    }
+    @Test
+    void magoEquiparEscudo(){
+        assertEquals("Você não pode equipar esse tipo de item",
+                druida.equiparItem(new Item(TipoItemEscudo.getTipoItemEscudo())));
+    }
 }

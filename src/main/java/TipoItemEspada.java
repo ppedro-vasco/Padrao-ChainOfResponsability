@@ -4,4 +4,8 @@ public class TipoItemEspada implements TipoItem{
     public static TipoItemEspada getTipoItemEspada() {
         return tipoItemEspada;
     }
+    @Override
+    public String toString() {
+        return "Espada";
+    }
 }

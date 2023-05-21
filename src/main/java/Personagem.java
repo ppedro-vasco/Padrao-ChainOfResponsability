@@ -12,18 +12,18 @@ public abstract class Personagem {
         this.lider = lider;
     }
 
-    public abstract String getDescricaoClasse();
+    public abstract String getMensagem(Item item);
 
-    public String needItem(Item item){
+    public String equiparItem(Item item){
         if (listaItens.contains(item.getTipoItem())){
-            return getDescricaoClasse();
+            return getMensagem(item);
         }
         else {
             if (lider != null){
-                return lider.needItem(item);
+                return lider.equiparItem(item);
             }
             else {
-                return "Você não pode pedir esse tipo de item";
+                return "Você não pode equipar esse tipo de item";
             }
         }
     }

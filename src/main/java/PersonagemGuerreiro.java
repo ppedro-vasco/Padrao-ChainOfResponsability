@@ -4,7 +4,7 @@ public class PersonagemGuerreiro extends Personagem {
         setPersonagemLider(lider);
 
     }
-    public String getDescricaoClasse(){
-        return "Você pode pedir esse tipo de item";
+    public String getMensagem(Item item){
+        return "Guerreiro equipou o item: " + item.getTipoItem();
     }
 }
