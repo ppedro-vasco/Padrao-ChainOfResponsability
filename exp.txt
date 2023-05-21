@@ -1,0 +1,3 @@
+No código fornecido, a classe abstrata Personagem representa um handler na cadeia de responsabilidade. O método needItem é responsável por tratar a solicitação de um item. Se o personagem atual tiver o item correspondente em sua lista de itens, ele trata a solicitação. Caso contrário, ele passa a solicitação para o próximo handler na cadeia (representado pelo atributo lider). Se não houver mais handlers na cadeia, uma mensagem de erro é retornada.
+
+Cada classe concreta que herda de Personagem (por exemplo, PersonagemDruida, PersonagemGuerreiro, etc.) representa um handler específico na cadeia de responsabilidade. Cada handler possui uma lista de itens que ele pode tratar e um líder para repassar a solicitação, se necessário.
