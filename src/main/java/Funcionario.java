@@ -21,7 +21,7 @@ public abstract class Funcionario {
             }
             else
             {
-                return "DEU MERDA";
+                return "Estabelecimento sem pedidos.";
             }
         }
     }
