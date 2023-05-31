@@ -4,26 +4,36 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PedidoTest {
+    FuncionarioGerente gerente;
     FuncionarioAtendente atendente;
     FuncionarioCozinheiro cozinheiro;
     FuncionarioEntregador entregador;
     @BeforeEach
     void setUp(){
-        atendente = new FuncionarioAtendente(null);
-        cozinheiro = new FuncionarioCozinheiro(atendente);
-        entregador = new FuncionarioEntregador(cozinheiro);
+        gerente = new FuncionarioGerente(null);
+        entregador = new FuncionarioEntregador(gerente);
+        cozinheiro = new FuncionarioCozinheiro(entregador);
+        atendente = new FuncionarioAtendente(cozinheiro);
     }
 
     @Test
-    void deveRetornarSecretariaParaAssinaturaHistorico() {
-        assertEquals("Entregador", entregador.interagirPedido(new Pedido(EntregaPedido.getEntregaPedido())));
+    void deveRetornarAtendenteParaAtenderPedido() {
+        assertEquals("Atendente", atendente.interagirPedido(new Pedido(RecebePedido.getRecebePedido())));
     }
     @Test
-    void deveRetornarSecretariaParaAssinaturaHistorico1() {
-        assertEquals("Cozinheiro", entregador.interagirPedido(new Pedido(PreparaPedido.getPreparaPedido())));
+    void deveRetornarCozinheiroParaAtenderPedido() {
+        assertEquals("Cozinheiro", atendente.interagirPedido(new Pedido(PreparaPedido.getPreparaPedido())));
     }
     @Test
-    void deveRetornarSecretariaParaAssinaturaHistorico2() {
-        assertEquals("Atendente", entregador.interagirPedido(new Pedido(RecebePedido.getRecebePedido())));
+    void deveRetornarEntregadorParaAtenderPedido() {
+        assertEquals("Entregador", atendente.interagirPedido(new Pedido(EntregaPedido.getEntregaPedido())));
+    }
+    @Test
+    void deveRetornarGerenteParaAtenderPedido() {
+        assertEquals("Gerente", atendente.interagirPedido(new Pedido(RegistraPagamentoPedido.getRegistroPagamentoPedido())));
+    }
+    @Test
+    void deveRetornarPedidoComIngredienteFaltante() {
+        assertEquals("Estabelecimento sem ingredientes para fabricar o pedido.", atendente.interagirPedido(new Pedido(PedidoComIngredienteFaltante.getIngredienteFaltante())));
     }
 }

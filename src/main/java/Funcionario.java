@@ -21,7 +21,7 @@ public abstract class Funcionario {
             }
             else
             {
-                return "Estabelecimento sem pedidos.";
+                return "Estabelecimento sem ingredientes para fabricar o pedido.";
             }
         }
     }
